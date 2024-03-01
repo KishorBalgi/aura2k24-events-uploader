@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aura Event Details Form</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script src="./index.js"></script>
+  </head>
+  <body class="container mt-5">
+    <form onsubmit="return submitData()">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title" required />
+      </div>
+
+      <div class="form-group">
+        <label for="club">Club:</label>
+        <!-- Clubs dropdown -->
+        <select class="form-select" id="club" required>
+          <option value="" disabled selected>Select Club</option>
+          <option value="Music">Music</option>
+          <option value="Dance">Dance</option>
+          <option value="Fashion">Fashion</option>
+          <option value="Literary">Literary</option>
+          <option value="Drama">Drama</option>
+          <option value="Specials">Specials</option>
+          <option value="Photography">Photography</option>
+          <option value="Quiz">Quiz</option>
+          <option value="Fine Arts">Fine Arts</option>
+          <option value="E - Gaming">E - Gaming</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea
+          class="form-control"
+          id="description"
+          rows="3"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="teamSize">Team Size:</label>
+        <input type="number" class="form-control" id="teamSize" required />
+      </div>
+
+      <div class="form-group">
+        <label for="minTeamSize">Min Team Size:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="minTeamSize"
+          value="1"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="rounds">Rounds:</label>
+        <input type="number" class="form-control" id="rounds" required />
+      </div>
+
+      <div class="form-group">
+        <label for="registrationLimit">Registration Limit:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="registrationLimit"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="whatsAppGroupInvite">WhatsApp Group Invite:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="whatsAppGroupInvite"
+          required
+        />
+      </div>
+
+      <h3 class="my-3">Rules:</h3>
+      <div id="rulesContainer" class="mb-3"></div>
+      <input
+        class="ruleInput"
+        type="text"
+        id="rule_${ruleContainer.childElementCount + 1}"
+        required
+      />
+      <button class="btn btn-primary" onclick="deleteRule(this)">Delete</button>
+      <button class="btn btn-primary" type="button" onclick="addNewRule()">
+        New
+      </button>
+
+      <h3 class="my-3">Event Coordinators:</h3>
+      <div id="coordinatorContainer" class="mb-3">
+        <div class="form-group coordinator">
+          <label for="coordinatorName">Name: </label>
+          <input
+            type="text"
+            class="form-control"
+            id="coordinatorName"
+            name="coordinatorName"
+            required
+          />
+          <label for="coordinatorContact">Contact Number: </label>
+          <input
+            type="text"
+            class="form-control"
+            id="coordinatorContact"
+            name="coordinatorContact"
+            maxlength="10"
+            required
+          />
+          <label for="coordinatorImg">Coordinator Photo</label>
+          <input
+            type="file"
+            accept="image/png, image/jpeg"
+            class="form-control"
+            id="coordinatorImg"
+            name="coordinatorImg"
+            onchange="checkFileSize(this)"
+            required
+          />
+        </div>
+      </div>
+      <button class="btn btn-primary" type="button" onclick="addCoordinator()">
+        New
+      </button>
+      <br />
+      <button class="btn btn-success mt-3" type="submit">Submit</button>
+      <br /><br />
+      <div class="form-group">
+        <label for="finalData">JSON string:</label>
+        <textarea
+          class="form-control"
+          id="finalData"
+          rows="10"
+          readonly="true"
+        ></textarea>
+      </div>
+    </form>
+  </body>
+</html>
